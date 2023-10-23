@@ -9,7 +9,6 @@ const NAMES = ['Абакум', 'Абрам', 'Абросим', 'Аввакум',
 const DESCRIPTIONS = ['fine', 'cute', 'cool', 'ugly', 'funny', 'happy', 'fat'];
 const generatePhotoId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
 const generateUrlId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
-const array = [];
 const generateComments = () => {
   const COMMENTS_COUNT = 30;
   const AVATAR_COUNT = 6;
@@ -64,7 +63,4 @@ function createRandomIdFromRangeGenerator (min, max) {
   };
 }
 
-for (let i = 0; i < COUNT_OBJECT; i++) {
-  array.push(createObject());
-}
-
+const array = Array.from({length: COUNT_OBJECT}, createObject);
