@@ -1,7 +1,4 @@
-const ARRAY = [];
 const COUNT_OBJECT = 25;
-const GENERATE_PHOTO_ID = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
-const GENERATE_URL_ID = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
 const MESSAGES = ['Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -10,32 +7,37 @@ const MESSAGES = ['Всё отлично!',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 const NAMES = ['Абакум', 'Абрам', 'Абросим', 'Аввакум', 'Август', 'Авдей', 'Авдий', 'Авель'];
 const DESCRIPTIONS = ['fine', 'cute', 'cool', 'ugly', 'funny', 'happy', 'fat'];
+const generatePhotoId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
+const generateUrlId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
+const array = [];
 const generateComments = () => {
-  const COMMENTS_BORDER_COUNT = [0,30];
-  const AVATAR_COUNT = [1,6];
-  const MESSAGE_COUNT = [0,5];
-  const NAME_COUNT = [0,7];
-  const GENERATE_COMMENT_ID = createRandomIdFromRangeGenerator(...COMMENTS_BORDER_COUNT);
-  const COMMENTS = [];
+  const COMMENTS_COUNT = 30;
+  const AVATAR_COUNT = 6;
+  const MESSAGE_COUNT = 5;
+  const NAME_COUNT = 7;
+  const generateCommentId = createRandomIdFromRangeGenerator(0, COMMENTS_COUNT);
+  const comments = [];
 
-  for (let i = 0; i < getRandomInteger(...COMMENTS_BORDER_COUNT); i++) {
-    COMMENTS.push({
-      id: GENERATE_COMMENT_ID(),
-      avatar: `img/avatar-${getRandomInteger(...AVATAR_COUNT)}.svg`,
-      message: MESSAGES[getRandomInteger(...MESSAGE_COUNT)],
-      name: NAMES[getRandomInteger(...NAME_COUNT)]
+  for (let i = 0; i < getRandomInteger(0, COMMENTS_COUNT); i++) {
+    comments.push({
+      id: generateCommentId(),
+      avatar: `img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg`,
+      message: MESSAGES[getRandomInteger(0, MESSAGE_COUNT)],
+      name: NAMES[getRandomInteger(0, NAME_COUNT)]
     });
   }
-  return COMMENTS;
+  return comments;
 };
 const createObject = () => {
-  const DESCRIPTIONS_COUNT = [0,6];
-  const LIKES_BORDER_COUNT = [15,200];
+  const DESCRIPTIONS_COUNT = 6;
+  const LIKES_MAX_COUNT = 200;
+  const LIKES_MIN_COUNT = 15;
+
   return ({
-    id: GENERATE_PHOTO_ID(),
-    url: `photos/${GENERATE_URL_ID()}.jpg`,
-    description: DESCRIPTIONS[getRandomInteger(...DESCRIPTIONS_COUNT)],
-    likes: getRandomInteger(...LIKES_BORDER_COUNT),
+    id: generatePhotoId(),
+    url: `photos/${generateUrlId()}.jpg`,
+    description: DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS_COUNT)],
+    likes: getRandomInteger(LIKES_MIN_COUNT, LIKES_MAX_COUNT),
     comments: generateComments()
   });
 };
@@ -63,5 +65,6 @@ function createRandomIdFromRangeGenerator (min, max) {
 }
 
 for (let i = 0; i < COUNT_OBJECT; i++) {
-  ARRAY.push(createObject());
+  array.push(createObject());
 }
+
