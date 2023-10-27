@@ -9,11 +9,14 @@ const NAMES = ['Абакум', 'Абрам', 'Абросим', 'Аввакум',
 const DESCRIPTIONS = ['fine', 'cute', 'cool', 'ugly', 'funny', 'happy', 'fat'];
 const generatePhotoId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
 const generateUrlId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
+const COMMENTS_COUNT = 30;
+const AVATAR_COUNT = 6;
+const MESSAGE_COUNT = 5;
+const NAME_COUNT = 7;
+const DESCRIPTIONS_COUNT = 6;
+const LIKES_MAX_COUNT = 200;
+const LIKES_MIN_COUNT = 15;
 const generateComments = () => {
-  const COMMENTS_COUNT = 30;
-  const AVATAR_COUNT = 6;
-  const MESSAGE_COUNT = 5;
-  const NAME_COUNT = 7;
   const generateCommentId = createRandomIdFromRangeGenerator(0, COMMENTS_COUNT);
   const comments = [];
 
@@ -27,19 +30,14 @@ const generateComments = () => {
   }
   return comments;
 };
-const createObject = () => {
-  const DESCRIPTIONS_COUNT = 6;
-  const LIKES_MAX_COUNT = 200;
-  const LIKES_MIN_COUNT = 15;
-
-  return ({
+const createObject = () =>
+  ({
     id: generatePhotoId(),
     url: `photos/${generateUrlId()}.jpg`,
     description: DESCRIPTIONS[getRandomInteger(0, DESCRIPTIONS_COUNT)],
     likes: getRandomInteger(LIKES_MIN_COUNT, LIKES_MAX_COUNT),
     comments: generateComments()
   });
-};
 function getRandomInteger (min, max) {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
   const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
