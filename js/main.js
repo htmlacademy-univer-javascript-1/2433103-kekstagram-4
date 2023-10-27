@@ -7,8 +7,6 @@ const MESSAGES = ['Всё отлично!',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 const NAMES = ['Абакум', 'Абрам', 'Абросим', 'Аввакум', 'Август', 'Авдей', 'Авдий', 'Авель'];
 const DESCRIPTIONS = ['fine', 'cute', 'cool', 'ugly', 'funny', 'happy', 'fat'];
-const generatePhotoId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
-const generateUrlId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
 const COMMENTS_COUNT = 30;
 const AVATAR_COUNT = 6;
 const MESSAGE_COUNT = 5;
@@ -30,6 +28,8 @@ const generateComments = () => {
   }
   return comments;
 };
+const generatePhotoId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
+const generateUrlId = createRandomIdFromRangeGenerator(1, COUNT_OBJECT);
 const createObject = () =>
   ({
     id: generatePhotoId(),
