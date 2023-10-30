@@ -24,35 +24,36 @@
 
 const correctTime = (time) => time.map(t => parseFloat((parseFloat(t.replace(':', '.'))).toFixed(2)));
 
-const correctHours = (endTime) => {
-  const hours = Math.floor(endTime / 60);
-  const minutes = Math.round((endTime / 60 - hours) * 60);
+const correctHours = (endTime, minutesInHour) => {
+  const hours = Math.floor(endTime / minutesInHour);
+  const minutes = Math.round((endTime / minutesInHour - hours) * minutesInHour);
   return parseFloat(`${hours}.${minutes}`).toFixed(2);
 };
-const formatTime = (timeNoFormat, minutes) => {
-  const hoursCount = Math.round(minutes / 6);
-  timeNoFormat += Math.round(minutes / 6);
-  return (timeNoFormat - (hoursCount * 0.6)).toFixed(2);
+const formatTime = (timeNoFormat, minutes, minutesInHour) => {
+  const hoursCount = Math.round(minutes / minutesInHour / 10);
+  timeNoFormat += Math.round(minutes / minutesInHour / 10);
+  return (timeNoFormat - (hoursCount * minutesInHour / 100)).toFixed(2);
 };
 const getMeetingEndTime = (meetingStart, meetingDuration) => {
-  if (meetingDuration >= 60) {
-    meetingDuration = correctHours(meetingDuration);
+  const minutesInHour = 60;
+  if (meetingDuration >= minutesInHour) {
+    meetingDuration = correctHours(meetingDuration, minutesInHour);
   }
 
   const meetingEndTimeNoFormat = parseFloat(meetingStart + parseFloat(meetingDuration));
   const minutes = (meetingEndTimeNoFormat - Math.floor(meetingEndTimeNoFormat)).toFixed(1) * 10;
 
   if (minutes > 6) {
-    return formatTime(meetingEndTimeNoFormat, minutes);
+    return formatTime(meetingEndTimeNoFormat, minutes, minutesInHour);
   }
   return meetingEndTimeNoFormat;
 };
 const isMeetingInWorkingHours = (startTime, endTime, meetingStart, meetingDuration) => {
   const time = correctTime([startTime,endTime,meetingStart]);
-  const meetingEnd = getMeetingEndTime(time[2], meetingDuration);
   const startTimeIndex = 0;
   const endTimeIndex = 1;
   const meetingStartIndex = 2;
+  const meetingEnd = getMeetingEndTime(time[2], meetingDuration);
 
   if (time[startTimeIndex] > time[meetingStartIndex]) {
     return false;
