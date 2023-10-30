@@ -41,7 +41,7 @@ const createObject = () =>
     likes: getRandomInteger(LIKES_MIN_COUNT, LIKES_MAX_COUNT),
     comments: generateComments()
   });
-export function GenerateData () {
+export function generateData () {
   Array.from({length: COUNT_OBJECT}, createObject);
 }
 
