@@ -13,7 +13,7 @@ function getNumber(data) {
   data = data.toString().replaceAll(' ','');
   let result ='';
   for (let i = 0; i < data.length; i++) {
-    if (!isNaN(data[i])) {
+    if (!isNaN(Number(data[i]))) {
       result += data[i];
     }
   }
