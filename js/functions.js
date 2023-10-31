@@ -22,7 +22,7 @@
 
 // ============ 5.16. Функции возвращаются
 
-const correctTime = (time) => time.map(t => parseFloat((parseFloat(t.replace(':', '.'))).toFixed(2)));
+const correctTime = (time) => time.map(t => parseFloat((parseFloat(t.replace(/(\d*):(\d*)/, `$1.$2`))).toFixed(2)));
 
 const correctHours = (endTime, minutesInHour) => {
   const hours = Math.floor(endTime / minutesInHour);
@@ -62,5 +62,5 @@ const isMeetingInWorkingHours = (startTime, endTime, meetingStart, meetingDurati
 
 };
 
-//console.log(isMeetingInWorkingHours('08:10', '17:30', '14:50', 140)); // true
+console.log(isMeetingInWorkingHours('08:10', '17:30', '14:50', 140)); // true
 
