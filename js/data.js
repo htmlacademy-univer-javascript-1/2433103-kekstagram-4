@@ -1,4 +1,4 @@
-import {getRandomInteger, createRandomIdFromRangeGenerator} from './util';
+import {getRandomInteger, createRandomIdFromRangeGenerator} from './util.js';
 
 const COUNT_OBJECT = 25;
 const MESSAGES = ['Всё отлично!',
@@ -42,7 +42,7 @@ const createObject = () =>
     comments: generateComments()
   });
 export function generateData () {
-  Array.from({length: COUNT_OBJECT}, createObject);
+  return Array.from({length: COUNT_OBJECT}, createObject);
 }
 
 
