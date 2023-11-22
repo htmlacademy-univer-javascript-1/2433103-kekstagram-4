@@ -13,8 +13,9 @@ data.forEach((item, index)=> {
   const pictureInfo = picture.querySelector('.picture__info');
   pictureInfo.querySelector('.picture__comments').textContent = item.comments.length;
   pictureInfo.querySelector('.picture__likes').textContent = item.likes;
-  picture.querySelector('.picture').dataset.index = index;
+  picture.querySelector('.picture').dataset.index = index.toString();
   fragment.append(picture);
 });
 picturesContainer.append(fragment);
 thumbnailClickHandler(data);
+
