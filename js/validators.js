@@ -26,7 +26,7 @@ const isHashtagsCountCorrect = (value) => {
     return hashtagsCount <= MAX_HASHTAGS_COUNT;
   }
   return true;
-}
+};
 const isHashtagNotRepeat = (value) => {
   if (value !== '') {
     const hashtags = value.toLowerCase().trim().split(SEPARATOR);
@@ -34,7 +34,7 @@ const isHashtagNotRepeat = (value) => {
     return hashtags.length === hashtagsSet.size;
   }
   return true;
-}
+};
 const isDescriptionCountCorrect = (value) => regExpDescription.test(value);
 
 export {isHashtagsCountCorrect, isDescriptionCountCorrect, isSeparatorCorrect,
