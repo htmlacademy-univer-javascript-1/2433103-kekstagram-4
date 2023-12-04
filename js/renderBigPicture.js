@@ -78,6 +78,7 @@ const thumbnailClickHandler = (data) => {
     const picture = evt.target.closest('.picture');
     if (picture) {
       openModal(data[picture.dataset.index]);
+      evt.preventDefault();
     }
   });
 };
