@@ -1,5 +1,6 @@
-import {generateData} from './data.js';
+import {getData} from './api.js';
 import {renderPicture} from './renderPictures.js';
 import './form.js';
+import {showAlertWhenUploadError} from './alert.js';
 
-renderPicture(generateData());
+getData(renderPicture, showAlertWhenUploadError);
