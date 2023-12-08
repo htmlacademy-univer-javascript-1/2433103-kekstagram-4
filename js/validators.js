@@ -29,5 +29,8 @@ const isHashtagNotRepeat = (value) => {
 };
 const isDescriptionCountCorrect = (value) => regExpDescription.test(value);
 
-export {isHashtagsCountCorrect, isDescriptionCountCorrect, isSeparatorCorrect,
-  isHashtagCorrect, isHashtagNotRepeat, MAX_DESCRIPTIONS_COUNT, MAX_HASHTAGS_COUNT};
+const getMaxDescriptionCount = () => MAX_DESCRIPTIONS_COUNT;
+const getMaxHashtagsCount = () => MAX_HASHTAGS_COUNT;
+
+export {isHashtagsCountCorrect, isDescriptionCountCorrect,
+  isHashtagCorrect, isHashtagNotRepeat, getMaxDescriptionCount, getMaxHashtagsCount};
