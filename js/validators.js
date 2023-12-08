@@ -12,14 +12,6 @@ const isHashtagCorrect = (value) => {
   }
   return true;
 };
-const isSeparatorCorrect = (value) => {
-  if (value !== '') {
-    const hashtags = value.toLowerCase().trim().split(SEPARATOR);
-    const hashtagsCount = value.split('').filter((sym) => sym === '#').length;
-    return hashtagsCount === hashtags.length;
-  }
-  return true;
-};
 const isHashtagsCountCorrect = (value) => {
   if (value !== '') {
     const hashtagsCount = value.toLowerCase().trim().split(SEPARATOR).length;
