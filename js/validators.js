@@ -12,14 +12,6 @@ const isHashtagCorrect = (value) => {
   }
   return true;
 };
-const isSeparatorCorrect = (value) => {
-  if (value !== '') {
-    const hashtags = value.toLowerCase().trim().split(SEPARATOR);
-    const hashtagsCount = value.split('').filter((sym) => sym === '#').length;
-    return hashtagsCount === hashtags.length;
-  }
-  return true;
-};
 const isHashtagsCountCorrect = (value) => {
   if (value !== '') {
     const hashtagsCount = value.toLowerCase().trim().split(SEPARATOR).length;
@@ -37,5 +29,8 @@ const isHashtagNotRepeat = (value) => {
 };
 const isDescriptionCountCorrect = (value) => regExpDescription.test(value);
 
-export {isHashtagsCountCorrect, isDescriptionCountCorrect, isSeparatorCorrect,
-  isHashtagCorrect, isHashtagNotRepeat, MAX_DESCRIPTIONS_COUNT, MAX_HASHTAGS_COUNT};
+const getMaxDescriptionCount = () => MAX_DESCRIPTIONS_COUNT;
+const getMaxHashtagsCount = () => MAX_HASHTAGS_COUNT;
+
+export {isHashtagsCountCorrect, isDescriptionCountCorrect,
+  isHashtagCorrect, isHashtagNotRepeat, getMaxDescriptionCount, getMaxHashtagsCount};
