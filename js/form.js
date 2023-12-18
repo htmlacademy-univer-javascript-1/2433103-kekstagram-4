@@ -18,11 +18,14 @@ const scaleControlSmaller = imgUploadForm.querySelector('.scale__control--smalle
 const scaleControlBigger = imgUploadForm.querySelector('.scale__control--bigger');
 const scaleControlValue = imgUploadForm.querySelector('.scale__control--value');
 const imgPreview = imgUploadForm.querySelector('.img-upload__preview img');
+const imgUploadPreview = imgUploadForm.querySelector('.img-upload__preview');
+
 const effectLevelValue = imgUploadForm.querySelector('.effect-level__value');
 const effectLevel = imgUploadForm.querySelector('.img-upload__effect-level');
 const effectList = imgUploadForm.querySelector('.effects__list');
-const effectLevelSlider = document.querySelector('.effect-level__slider');
-const submitButton = document.querySelector('.img-upload__submit');
+const effectLevelSlider = imgUploadForm.querySelector('.effect-level__slider');
+const submitButton = imgUploadForm.querySelector('.img-upload__submit');
+const imgUploadInput = imgUploadForm.querySelector('.img-upload__input');
 
 const effectsOptions = getEffectsOptions(effectLevelValue, effectLevel);
 const scaleOptions = getScaleOptions(imgPreview, scaleControlValue);
