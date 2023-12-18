@@ -95,6 +95,12 @@ closeModalWindow = () => {
 
 noUiSlider.create(effectLevelSlider, effectsOptions.getOptions());
 
+const showPreviewImage = () => {
+  imgPreview.width = String(imgUploadPreview.clientWidth);
+  imgPreview.height = String(imgUploadPreview.clientHeight);
+  imgPreview.src = URL.createObjectURL(imgUploadInput.files[0]);
+};
+
 uploadFile.addEventListener('change', () => {
   imgUploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
