@@ -4,7 +4,11 @@ const templatePicture = document.querySelector('#picture').content;
 const fragment = new DocumentFragment();
 const picturesContainer = document.querySelector('.pictures');
 
-const renderPicture = (data) => {
+const renderPicture = (data, isReplace = false) => {
+  if (isReplace) {
+    const currentPictures = document.body.querySelectorAll('.picture');
+    currentPictures.forEach((item) => item.remove());
+  }
   data.forEach((item, index) => {
     const picture = templatePicture.cloneNode(true);
     const pictureImg = picture.querySelector('.picture__img');
