@@ -18,6 +18,38 @@ const createRandomIdFromRangeGenerator = (min, max) => {
     return currentValue;
   };
 };
+const sortByCommentsLength = (a, b) => {
+  if (a.comments.length > b.comments.length) {
+    return -1;
+  }
+  if (a.comments.length < b.comments.length) {
+    return 1;
+  }
+  return 0;
+};
+const getCountRandomPictures = (data, count) => {
+  const numbersArray = [];
+  const generateNumbers = createRandomIdFromRangeGenerator(0, 24);
+  for (let i = 0; i < count; i++) {
+    numbersArray.push(generateNumbers());
+  }
+  const tempPicturesArray = [];
+  data.forEach((item, i) => {
+    if (numbersArray.includes(i)) {
+      tempPicturesArray.push(data[i]);
+    }
+  });
+  return tempPicturesArray;
+};
+
+function debounce(callback, timeoutDelay = 500) {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 export {createRandomIdFromRangeGenerator, getRandomInteger, isEscapeKey};
