@@ -1,3 +1,5 @@
+import {showImgFilters} from './imagesFilters.js';
+
 const getData = (onSuccess, onFail) => {
   fetch('https://29.javascript.pages.academy/kekstagram/data')
     .then((response) => {
@@ -6,7 +8,10 @@ const getData = (onSuccess, onFail) => {
       }
       throw new Error();
     })
-    .then((data) => onSuccess(data))
+    .then((data) => {
+      onSuccess(data);
+      return data;
+    }).then((data) => showImgFilters(data))
     .catch(() => onFail('Ошибка при загрузке данных с сервера'));
 };
 
