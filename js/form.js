@@ -121,6 +121,7 @@ uploadFile.addEventListener('change', () => {
     effectLevelValue.value = effectLevelSlider.noUiSlider.get();
     imgPreview.style.filter = effectsOptions.getStyles();
   });
+  showPreviewImage();
 
   imgUploadForm.addEventListener('submit', submitForm);
 });
