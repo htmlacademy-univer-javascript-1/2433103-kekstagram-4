@@ -52,5 +52,12 @@ function debounce(callback, timeoutDelay = 500) {
 }
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
-export {createRandomIdFromRangeGenerator, getRandomInteger, isEscapeKey};
+export {
+  createRandomIdFromRangeGenerator,
+  getRandomInteger,
+  isEscapeKey,
+  sortByCommentsLength,
+  getCountRandomPictures,
+  debounce
+};
 
