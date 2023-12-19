@@ -1,5 +1,5 @@
 const MAX_HASHTAGS_COUNT = 5;
-const MAX_DESCRIPTIONS_COUNT = 120;
+const MAX_DESCRIPTIONS_COUNT = 140;
 const SEPARATOR = ' ';
 
 const regExpHashtag = new RegExp('^#[0-9A-Za-zа-яА-Я]{1,19}$');

@@ -8,6 +8,8 @@ const renderPicture = (data, isReplace = false) => {
   if (isReplace) {
     const currentPictures = document.body.querySelectorAll('.picture');
     currentPictures.forEach((item) => item.remove());
+  } else {
+    thumbnailClickHandler(data);
   }
   data.forEach((item, index) => {
     const picture = templatePicture.cloneNode(true);
@@ -21,7 +23,6 @@ const renderPicture = (data, isReplace = false) => {
     fragment.append(picture);
   });
   picturesContainer.append(fragment);
-  thumbnailClickHandler(data);
 };
 
 export {renderPicture};
